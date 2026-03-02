@@ -1,0 +1,394 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>나진형 ♥ 이수미 결혼합니다</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@300;400;600&family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<!-- 1. 메인 사진 -->
+<section id="hero">
+  <img id="hero-photo" src="A.jpg" alt="메인 사진"
+       onload="this.style.display='block'"
+       onerror="this.style.display='none'; document.getElementById('hero-fallback').style.display='flex'">
+  <div id="hero-fallback" style="display:none; position:absolute; inset:0; align-items:center; justify-content:center; flex-direction:column; gap:8px; color:rgba(255,255,255,0.4); font-size:13px; letter-spacing:2px;">
+    <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2" opacity="0.4">
+      <path d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"/>
+    </svg>
+    아직 없음
+  </div>
+  <div id="hero-content">
+    <p class="hero-date">2026 · 09 · 06</p>
+    <div class="hero-names">나진형 <span class="amp">&</span> 이수미</div>
+  </div>
+  <div class="hero-scroll">SCROLL</div>
+</section>
+
+<!-- 2. 장소/일시 -->
+<div class="divider"><span class="divider-icon">✦</span></div>
+<section id="info">
+  <p class="info-label">Venue & Date</p>
+  <p class="info-main">성균관컨벤션웨딩홀</p>
+  <p class="info-sub">서울 종로구 ㅁㅁ거리 3층</p>
+  <div class="info-blocks">
+    <div class="info-block">
+      <div class="info-block-icon">📅</div>
+      <div class="info-block-label">DATE</div>
+      <div class="info-block-value">2026년<br>9월 6일 (일)</div>
+    </div>
+    <div class="info-block">
+      <div class="info-block-icon">🕙</div>
+      <div class="info-block-label">TIME</div>
+      <div class="info-block-value">오전<br>11 : 00</div>
+    </div>
+  </div>
+</section>
+
+<!-- 3. 초대장 -->
+<div class="divider"><span class="divider-icon">✦</span></div>
+<section id="invitation">
+  <div class="invitation-ornament">✦</div>
+  <p class="invitation-text">
+    안녕하세요?<br>
+    좋은 자리에<br>
+    초대합니다.
+  </p>
+</section>
+
+<!-- 4. 가족 소개 -->
+<div class="divider"><span class="divider-icon">✦</span></div>
+<section id="family">
+  <p class="section-title">Family</p>
+  <div class="family-grid">
+    <div class="family-side">
+      <p class="family-role">신랑측</p>
+      <p class="family-parents">나상욱 · 오연해<br>의 장남</p>
+      <p class="family-name">나진형</p>
+    </div>
+    <div class="family-side">
+      <p class="family-role">신부측</p>
+      <p class="family-parents">이광주 · 이엄마<br>의 차녀</p>
+      <p class="family-name">이수미</p>
+    </div>
+  </div>
+</section>
+
+<!-- 5. 달력 -->
+<div class="divider"><span class="divider-icon">✦</span></div>
+<section id="calendar">
+  <p class="section-title">Calendar</p>
+  <div class="cal-wrap">
+    <div class="cal-header">2026년 9월</div>
+    <div class="cal-days-header">
+      <div class="cal-day-name">일</div>
+      <div class="cal-day-name">월</div>
+      <div class="cal-day-name">화</div>
+      <div class="cal-day-name">수</div>
+      <div class="cal-day-name">목</div>
+      <div class="cal-day-name">금</div>
+      <div class="cal-day-name">토</div>
+    </div>
+    <div class="cal-grid" id="cal-grid"></div>
+  </div>
+  <div class="cal-legend">
+    <span>🔴 추석 연휴 (24~26일)</span>
+    <span>♥ 결혼식 (6일)</span>
+  </div>
+</section>
+
+<!-- 6. 갤러리 슬라이더 -->
+<div class="divider"><span class="divider-icon">✦</span></div>
+<section id="gallery">
+  <p class="section-title" style="text-align:center">Gallery</p>
+  <div class="slider-wrap">
+    <div class="slider-track" id="slider-track"></div>
+    <button class="slider-btn prev" onclick="slideMove(-1)">&#8249;</button>
+    <button class="slider-btn next" onclick="slideMove(1)">&#8250;</button>
+    <div class="slider-counter" id="slider-counter">1 / 5</div>
+  </div>
+  <div class="slider-dots" id="slider-dots"></div>
+</section>
+
+<!-- 7. 오시는 길 -->
+<div class="divider"><span class="divider-icon">✦</span></div>
+<section id="location">
+  <p class="section-title" style="text-align:center">Location</p>
+
+  <!-- Google Maps embed (API 키 불필요) -->
+  <div class="kakao-map-wrap">
+    <iframe
+      src="https://maps.google.com/maps?q=37.58267,126.99720&z=17&output=embed&hl=ko"
+      allowfullscreen
+      loading="lazy"
+      referrerpolicy="no-referrer-when-downgrade"
+      title="성균관컨벤션웨딩홀 지도">
+    </iframe>
+  </div>
+  <p class="map-address">📍 서울 종로구 ㅁㅁ거리 성균관컨벤션웨딩홀 3층</p>
+
+  <div class="map-buttons">
+    <a class="map-btn" href="https://map.kakao.com/link/search/성균관컨벤션웨딩홀" target="_blank">
+      <svg width="15" height="15" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10" fill="#FEE500"/><path d="M12 6.5c-3.04 0-5.5 2.02-5.5 4.5 0 1.57.9 2.96 2.27 3.8l-.5 2.2 2.3-1.4c.46.08.93.12 1.43.12 3.04 0 5.5-2.02 5.5-4.5S15.04 6.5 12 6.5z" fill="#3A1D1D"/></svg>
+      카카오맵
+    </a>
+    <a class="map-btn" href="https://map.naver.com/v5/search/성균관컨벤션웨딩홀" target="_blank">
+      <svg width="15" height="15" viewBox="0 0 24 24" fill="none"><rect width="24" height="24" rx="4" fill="#03C75A"/><path d="M13.2 12.4L10.6 8H8v8h2.8v-4.4l2.6 4.4H16V8h-2.8v4.4z" fill="white"/></svg>
+      네이버
+    </a>
+    <a class="map-btn" href="https://maps.google.com/?q=성균관컨벤션웨딩홀+서울+종로구" target="_blank">
+      <svg width="15" height="15" viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z" fill="#4285F4"/><circle cx="12" cy="9" r="2.5" fill="white"/></svg>
+      구글
+    </a>
+  </div>
+
+  <div class="transport-item">
+    <div class="transport-icon">🚌</div>
+    <div class="transport-text">
+      <strong>버스</strong><br>
+      AAA, 171, 272, 111 승차<br>
+      명륜동 1가 하차 후 도보 4분
+    </div>
+  </div>
+  <div class="transport-item">
+    <div class="transport-icon">🚇</div>
+    <div class="transport-text">
+      <strong>지하철</strong><br>
+      4호선 혜화역 하차<br>
+      도보 10분
+    </div>
+  </div>
+</section>
+
+<!-- 8. 마음 전하실 곳 -->
+<div class="divider"><span class="divider-icon">✦</span></div>
+<section id="account">
+  <p class="section-title" style="text-align:center">마음 전하실 곳</p>
+  <div class="account-cards">
+    <div class="account-card" onclick="openGroupPopup('groom')">
+      <div class="card-icon">🤵</div>
+      <div class="card-name">신랑측</div>
+      <div class="card-role">나진형 · 나상욱 · 오연해</div>
+    </div>
+    <div class="account-card" onclick="openGroupPopup('bride')">
+      <div class="card-icon">👰</div>
+      <div class="card-name">신부측</div>
+      <div class="card-role">이수미 · 이광주 · 이엄마</div>
+    </div>
+  </div>
+</section>
+
+<!-- 9. 공유 -->
+<div class="divider"><span class="divider-icon">✦</span></div>
+<section id="share">
+  <p class="section-title">Share</p>
+  <button class="share-btn" onclick="shareKakao()">
+    <svg width="22" height="22" viewBox="0 0 24 24" fill="#3A1D1D">
+      <path d="M12 3C6.48 3 2 6.58 2 11c0 2.85 1.67 5.36 4.2 6.9l-.8 3.1 3.5-2.3c.99.19 2.02.3 3.1.3 5.52 0 10-3.58 10-8S17.52 3 12 3z"/>
+    </svg>
+    카카오톡 공유하기
+  </button>
+</section>
+
+<footer id="footer">
+  <div class="footer-names">나진형 ♥ 이수미</div>
+  <div class="footer-date">2026 · 09 · 06 · 11:00 AM</div>
+</footer>
+
+<!-- 계좌 팝업 -->
+<div class="popup-overlay" id="popup-overlay" onclick="closePopupOutside(event)">
+  <div class="popup">
+    <button class="popup-close" onclick="closePopup()">×</button>
+    <div class="popup-heart">♥</div>
+    <div class="popup-role" id="popup-role"></div>
+    <div class="popup-divider"></div>
+    <div class="popup-account-list" id="popup-account-list"></div>
+  </div>
+</div>
+
+<div class="toast" id="toast"></div>
+
+<script>
+// ── 달력 생성 ──
+(function buildCalendar() {
+  const grid = document.getElementById('cal-grid');
+  const firstDay = 2; // 2026년 9월 1일 = 화요일
+  const totalDays = 30;
+  const weddingDay = 6;
+  const holidays = [24, 25, 26]; // 추석 연휴
+
+  for (let i = 0; i < firstDay; i++) {
+    const el = document.createElement('div');
+    el.className = 'cal-cell empty';
+    grid.appendChild(el);
+  }
+
+  for (let d = 1; d <= totalDays; d++) {
+    const el = document.createElement('div');
+    const dow = (firstDay + d - 1) % 7;
+    let cls = 'cal-cell';
+    if (dow === 0) cls += ' sun';
+    if (dow === 6) cls += ' sat';
+    if (d === weddingDay) cls += ' highlight';
+    if (holidays.includes(d)) cls += ' holiday holiday-label';
+    el.className = cls;
+    el.textContent = d;
+    grid.appendChild(el);
+  }
+})();
+
+// ── 갤러리 슬라이더 초기화 ──
+let slideIndex = 0;
+const TOTAL_SLIDES = 5;
+
+(function buildSlider() {
+  const track = document.getElementById('slider-track');
+  const dots  = document.getElementById('slider-dots');
+
+  for (let i = 0; i < TOTAL_SLIDES; i++) {
+    const num  = i + 1;
+    const src  = `B/B${num}.jpg`;
+
+    const slide = document.createElement('div');
+    slide.className = 'slide';
+    slide.innerHTML = `
+      <img id="simg-${i}" src="${src}" alt="갤러리 ${num}"
+           onload="this.classList.add('loaded'); document.getElementById('sph-${i}').classList.add('hidden')"
+           onerror="this.style.display='none'">
+      <div class="slide-placeholder" id="sph-${i}">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+          <path d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"/>
+        </svg>
+        아직 없음
+      </div>
+    `;
+    track.appendChild(slide);
+
+    const dot = document.createElement('div');
+    dot.className = 'dot' + (i === 0 ? ' active' : '');
+    dot.onclick = () => goToSlide(i);
+    dots.appendChild(dot);
+  }
+})();
+
+function goToSlide(idx) {
+  slideIndex = (idx + TOTAL_SLIDES) % TOTAL_SLIDES;
+  document.getElementById('slider-track').style.transform = `translateX(-${slideIndex * 100}%)`;
+  document.getElementById('slider-counter').textContent = `${slideIndex + 1} / ${TOTAL_SLIDES}`;
+  document.querySelectorAll('.dot').forEach((d, i) => d.classList.toggle('active', i === slideIndex));
+}
+
+function slideMove(dir) {
+  goToSlide(slideIndex + dir);
+}
+
+// 터치 스와이프 지원
+let touchStartX = 0;
+document.getElementById('slider-track').addEventListener('touchstart', e => {
+  touchStartX = e.touches[0].clientX;
+});
+document.getElementById('slider-track').addEventListener('touchend', e => {
+  const diff = touchStartX - e.changedTouches[0].clientX;
+  if (Math.abs(diff) > 40) slideMove(diff > 0 ? 1 : -1);
+});
+
+// ── 계좌 팝업 (그룹) ──
+const ACCOUNTS = {
+  groom: {
+    title: '신랑측',
+    list: [
+      { role: '신랑',      name: '나진형', bank: '신한은행', number: '110-222-383973' },
+      { role: '신랑 아버지', name: '나상욱', bank: '신한은행', number: '110-222-383974' },
+      { role: '신랑 어머니', name: '오연해', bank: '신한은행', number: '110-222-383975' },
+    ]
+  },
+  bride: {
+    title: '신부측',
+    list: [
+      { role: '신부',      name: '이수미', bank: '신한은행', number: '110-222-383976' },
+      { role: '신부 아버지', name: '이광주', bank: '신한은행', number: '110-222-383977' },
+      { role: '신부 어머니', name: '이엄마', bank: '신한은행', number: '110-222-383978' },
+    ]
+  }
+};
+
+function openGroupPopup(side) {
+  const data = ACCOUNTS[side];
+  document.getElementById('popup-role').textContent = data.title;
+
+  const list = document.getElementById('popup-account-list');
+  list.innerHTML = data.list.map((a, i) => `
+    <div class="popup-account-row">
+      <div class="popup-account-info">
+        <span class="popup-account-role">${a.role} · ${a.name}</span>
+        <span class="popup-account-number">${a.bank} ${a.number}</span>
+      </div>
+      <button class="popup-copy-btn" id="pcopy-${i}" onclick="copyGroupAccount(this, '${a.number}')">복사</button>
+    </div>
+  `).join('');
+
+  document.getElementById('popup-overlay').classList.add('show');
+  document.body.style.overflow = 'hidden';
+}
+
+function copyGroupAccount(btn, number) {
+  navigator.clipboard.writeText(number).then(() => {
+    btn.textContent = '✓';
+    btn.classList.add('copied');
+    setTimeout(() => { btn.textContent = '복사'; btn.classList.remove('copied'); }, 2000);
+    showToast('계좌번호가 복사되었습니다');
+  }).catch(() => {
+    const ta = document.createElement('textarea');
+    ta.value = number;
+    document.body.appendChild(ta);
+    ta.select();
+    document.execCommand('copy');
+    document.body.removeChild(ta);
+    showToast('계좌번호가 복사되었습니다');
+  });
+}
+
+function closePopup() {
+  document.getElementById('popup-overlay').classList.remove('show');
+  document.body.style.overflow = '';
+}
+function closePopupOutside(e) {
+  if (e.target === document.getElementById('popup-overlay')) closePopup();
+}
+
+// ── 카카오 공유 ──
+function shareKakao() {
+  if (navigator.share) {
+    navigator.share({
+      title: '나진형 ♥ 이수미 결혼합니다',
+      text: '2026년 9월 6일 오전 11시\n성균관컨벤션웨딩홀',
+      url: window.location.href
+    });
+  } else {
+    navigator.clipboard.writeText(window.location.href).then(() => {
+      showToast('링크가 복사되었습니다');
+    });
+  }
+}
+
+// ── 토스트 ──
+function showToast(msg) {
+  const t = document.getElementById('toast');
+  t.textContent = msg;
+  t.classList.add('show');
+  setTimeout(() => t.classList.remove('show'), 2500);
+}
+
+// ── 스크롤 애니메이션 ──
+const observer = new IntersectionObserver(entries => {
+  entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+}, { threshold: 0.1 });
+
+document.querySelectorAll('section, footer').forEach(el => {
+  if (el.id !== 'hero') observer.observe(el);
+});
+</script>
+</body>
+</html>
